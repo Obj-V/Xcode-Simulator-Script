@@ -5,7 +5,7 @@ import os
 import threading
 import time
 
-BUNDLE_ID = "enterprise.pennypop.dance"
+BUNDLE_ID = "YOUR_PROJECT_BUNDLE_ID"
 
 def terminateAll():
     simulators = json.loads(subprocess.check_output(['xcrun', 'simctl', 'list', '--json']))

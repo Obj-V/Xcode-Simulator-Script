@@ -28,15 +28,15 @@ def get_sim_state(simulator):
 
 
 CONFIGURATION = "Debug"
-PROJECT = "Dance"
-BUNDLE_ID = "enterprise.pennypop.dance"
+PROJECT = "YOUR_PROJECT_NAME"
+BUNDLE_ID = "YOUR_PROJECT_BUNDLE_ID"
 
 xcodebuild_cmd = [
     "xcodebuild", 
-    "-project", "PennyPop.xcodeproj", 
+    "-project", "YOUR_PROJECT_NAME.xcodeproj", 
     "-configuration", CONFIGURATION, 
     "-target", PROJECT,
-    "-scheme", "DanceDebug", 
+    "-scheme", "YOUR_PROJECT_NAME_SCHEME", 
     "-derivedDataPath", 
     "build"
 ]
@@ -48,15 +48,14 @@ def compile():
     for sim in simulators:
         xcodebuild_cmd.extend(['-destination', 'id={}'.format(get_sim_udid(sim))])
     
-    
     p = subprocess.Popen(xcodebuild_cmd, stdout=subprocess.PIPE, bufsize=1)
     for line in iter(p.stdout.readline, ""):
         sys.stdout.write(line)
     p.stdout.close()
     return_code = p.wait()
 
-
 compile()
+
 
 def launch_sim(sim):
     udid = get_sim_udid(sim)
